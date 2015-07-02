@@ -1,0 +1,218 @@
+//自定义button
+.button {
+  display: inline-block;
+  padding: 13px 36px 11px 36px;
+  border-radius: 3px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.green{
+    background-color: green;
+    width: 100px;
+    &:hover{
+      background-color: red;
+      width: 300px;
+      //动作过度
+      .transition(all 2s ease-in);
+/*      .transition-property(background-color width);
+      .transition-duration(2s);*/
+    }
+  }
+}
+
+
+#tramsform{
+  height: 200px;
+  width: 200px;
+  display: block;
+  &:hover .transF2{
+    opacity: 0;
+    filter: Alpha(opacity=0);
+    .transform(scale(0, 0));
+    .transform-origin(bottom left);
+  }
+  &:hover .transF1{
+    opacity: 1;
+    filter: Alpha(opacity=100);
+    .transform(scale(1, 1));
+    .transform-origin(top right);
+  }
+  .imgbox{
+    width: 200px;
+    height:200px;
+    .transition(all 1s ease-in-out);
+    position: absolute;
+  }
+  .transF1{
+    background-color: chartreuse;
+    opacity: 0;
+    filter: Alpha(opacity=0);
+    .transform(scale(0, 0));
+  }
+  .transF2{
+    background-color: #ff4234;
+  }
+}
+
+#animatuin{
+  &>.animationF1{
+    width: 200px;
+    height: 100px;
+    background-color: aquamarine;
+    .animation(roateEvent 4s infinite);
+    .animation-timing-function(linear);
+    @keyframes roateEvent
+    {
+      from {.transform(rotateY(0deg));}
+      to {.transform(rotateY(360deg));}
+    }
+
+    @-webkit-keyframes roateEvent
+    {
+      from {.transform(rotateY(0deg));}
+      to {.transform(rotateY(360deg));}
+    }
+  }
+}
+
+
+
+//----------------------transition------------------
+//简写属性，用于在一个属性中设置四个过渡属性。
+.transition(@args){
+  transition: @args;
+  -webkit-transition: @args;
+  -moz-transition: @args;
+  -o-transition: @args;
+  -ms-transition: @args;
+}
+//规定应用过渡的 CSS 属性的名称。 none:没有属性会获得过渡效果 / all:所有属性都将获得过渡效果 / property:定义应用过渡效果的 CSS 属性名称列表，列表以逗号分隔。
+.transition-property(@args){
+  transition-property :@args;
+  -webkit-transition-property :@args;
+  -moz-transition-property :@args;
+  -o-transition-property :@args;
+  -ms-transition-property :@args;
+}
+//定义过渡效果花费的时间。
+.transition-duration(@args){
+  transition-duration : @args;
+  -webkit-transition-duration : @args;
+  -moz-transition-duration : @args;
+  -o-transition-duration : @args;
+  -ms-transition-duration : @args;
+}
+//规定过渡效果的时间曲线。
+.transition-timing-function(@args){
+  transition-timing-function: @args;
+  -webkit-transition-timing-function: @args;
+  -moz-transition-timing-function: @args;
+  -o-transition-timing-function: @args;
+  -ms-transition-timing-function: @args;
+}
+//规定过渡效果何时开始。
+.transition-delay(@args){
+  transition-delay:@args;
+  -webkit-transition-delay:@args;
+  -moz-transition-delay:@args;
+  -o-transition-delay:@args;
+  -ms-transition-delay:@args;
+}
+
+
+//----------------------2D/3D 转换属性（Transform）------------------
+.transform(@args){
+  transform:@args;
+  -webkit-transform:@args;
+  -moz-transform:@args;
+  -o-transform:@args;
+  -ms-transform:@args;
+}
+
+//允许你改变被转换元素的位置。
+.transform-origin(@args){
+  transform-origin:@args;
+  -webkit-transform-origin:@args;
+  -moz-transform-origin:@args;
+  -o-transform-origin:@args;
+  -ms-transform-origin:@args;
+}
+//设置其子元素是否保留其 3D 转换属性 flat:子元素将不保留其 3D 位置 / preserve-3d:子元素将保留其 3D 位置。
+.transform-style(@args){
+  transform-style:@args;
+  -webkit-transform-style:@args;
+  -moz-transform-style:@args;
+  -o-transform-style:@args;
+  -ms-transform-style:@args;
+}
+
+
+
+//--------------------animation--------------------
+//配合@keyframes 使用
+.animation(@args) {
+  -webkit-animation: @args;
+  -moz-animation: @args;
+  -ms-animation: @args;
+  -o-animation: @args;
+  animation: @args;
+}
+//帧动画方法名称
+.animation-name(@args){
+  animation-name: @args;
+  -webkit-animation-name: @args;
+  -moz-animation-name: @args;
+  -o-animation-name:@args;
+  -ms-animation-name:@args;
+}
+//规定动画完成一个周期所花费的秒或毫秒。
+.animation-duration(@args){
+  animation-duration:@args;
+  -moz-animation-duration:@args;
+  -o-animation-duration:@args;
+  -webkit-animation-duration:@args;
+  -ms-animation-duration:@args;
+}
+//动画播放速度曲线类型  linear:线性匀速 / ease: 默认, 动画以低速开始，然后加快，在结束前变慢 / ease-in:动画以低速开始 / ease-out:动画以低速结束 / ease-in-out	: 动画以低速开始和结束 / cubic-bezier(n,n,n,n) : (自定义)在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值
+.animation-timing-function(@args){
+  animation-timing-function:@args;
+  -moz-animation-timing-function:@args;
+  -o-animation-timing-function:@args;
+  -webkit-animation-timing-function:@args;
+  -ms-animation-timing-function:@args;
+}
+// 动画延时启动时间
+.animation-delay(@args){
+  animation-delay: @args;
+  -moz-animation-delay: @args;
+  -o-animation-delay: @args;
+  -webkit-animation-delay: @args;
+  -ms-animation-delay: @args;
+}
+//动画播放次数， n 或 infinite（无限循环）
+.animation-iteration-count(@args){
+  animation-iteration-count:@args;
+  -webkit-animation-iteration-count:@args;
+  -moz-animation-iteration-count:@args;
+  -o-animation-iteration-count:@args;
+  -ms-animation-iteration-count:@args;
+}
+//规定动画是否在下一周期逆向地播放 normal:默认值。动画应该正常播放。 / alternate:动画应该轮流反向播放。
+.animation-direction(@args){
+  animation-direction:@args;
+  -moz-animation-direction:@args;
+  -webkit-animation-direction:@args;
+  -o-animation-direction:@args;
+  -ms-animation-direction:@args;
+}
+//规定动画是否正在运行或暂停。  paused : 规定动画已暂停。/ running:规定动画正在播放。
+.animation-play-state(@args){
+  animation-play-state:@args;
+  -webkit-animation-play-state:@args;
+  -moz-animation-play-state:@args;
+  -o-animation-play-state:@args;
+  -ms-animation-play-state:@args;
+}
