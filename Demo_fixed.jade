@@ -16,4 +16,20 @@ html
 
          p Animation和transform 2D/3D效果 合用
          #animatuin
-            .animationF1
+            .animationF1 HelloWordHelloWordHelloWordHelloWord
+         p 照片自动播放效果，左右区域点击也可以切换照片
+         #picAutoRoll
+            div
+               .buttonRight
+               .buttonLeft
+               ul.picaminate.rollLeft
+                  mixin list(classname)
+                     li(class=classname)
+                  +list('imagesCenter')
+                  +list('imagesCenter')
+                  +list('imagesCenter')
+                  +list('imagesCenter')
+                  +list('imagesCenter')
+
+         p Next_Example--------
+

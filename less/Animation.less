@@ -1,83 +1,15 @@
-//自定义button
-.button {
-  display: inline-block;
-  padding: 13px 36px 11px 36px;
-  border-radius: 3px;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  &.green{
-    background-color: green;
-    width: 100px;
-    &:hover{
-      background-color: red;
-      width: 300px;
-      //动作过度
-      .transition(all 2s ease-in);
-/*      .transition-property(background-color width);
-      .transition-duration(2s);*/
-    }
-  }
+*{
+  margin: 0;
+  padding: 0;
 }
 
-
-#tramsform{
-  height: 200px;
-  width: 200px;
-  display: block;
-  &:hover .transF2{
-    opacity: 0;
-    filter: Alpha(opacity=0);
-    .transform(scale(0, 0));
-    .transform-origin(bottom left);
-  }
-  &:hover .transF1{
-    opacity: 1;
-    filter: Alpha(opacity=100);
-    .transform(scale(1, 1));
-    .transform-origin(top right);
-  }
-  .imgbox{
-    width: 200px;
-    height:200px;
-    .transition(all 1s ease-in-out);
-    position: absolute;
-  }
-  .transF1{
-    background-color: chartreuse;
-    opacity: 0;
-    filter: Alpha(opacity=0);
-    .transform(scale(0, 0));
-  }
-  .transF2{
-    background-color: #ff4234;
-  }
+//list默认类型
+li{
+  list-style: none;
 }
-
-#animatuin{
-  &>.animationF1{
-    width: 200px;
-    height: 100px;
-    background-color: aquamarine;
-    .animation(roateEvent 4s infinite);
-    .animation-timing-function(linear);
-    @keyframes roateEvent
-    {
-      from {.transform(rotateY(0deg));}
-      to {.transform(rotateY(360deg));}
-    }
-
-    @-webkit-keyframes roateEvent
-    {
-      from {.transform(rotateY(0deg));}
-      to {.transform(rotateY(360deg));}
-    }
-  }
+p{
+  margin: 24px 0 12px 0;
 }
-
 
 
 //----------------------transition------------------
