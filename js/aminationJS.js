@@ -5,6 +5,9 @@ $(document).ready(function(){
     Enevt.loadPic(); //加载图片
     Enevt.picAutoRoll();
     Enevt.picManualRoll();
+
+    //ajax加载图片
+    Enevt.ajaxaddpic();
 });
 
 var Enevt = (function(){
@@ -15,6 +18,7 @@ var Enevt = (function(){
 
     loadPic = function(){
         picArry=$("#picAutoRoll li").toArray();
+        console.log(picArry);
         frameWidth = $("#picAutoRoll div").width();//设置图片每次滚动的宽度
         $.each(picArry, function (i){
             $("#picAutoRoll li").eq(i).css({
@@ -63,11 +67,44 @@ var Enevt = (function(){
         console.log(leftWidth);
     }
 
+
+    //ajax jason加载图片
+
+    ajaxaddpic = function(){
+        var num =queryData.length;
+        for(var i=0;i<num;i++){
+            $('#ajaxgitpic>ul>li:eq('+i+')>img').attr('src','images/'+(i+1)+'.jpg');
+        }
+
+    }
     return{
         loadPic:loadPic,//初始加载图片
         PlayPic:PlayPic,
         picAutoRoll:picAutoRoll,   //自动播放
-        picManualRoll:picManualRoll   //手动播放
+        picManualRoll:picManualRoll,   //手动播放
+        ajaxaddpic:ajaxaddpic
     }
 })();
+
+
+
+var queryData = {};
+//异步请求数据
+queryData.ajax = function() {
+    $.ajax({
+        url: 'jason/imgInfo.json',
+        type: 'post',
+        dataType: 'json',
+        success: function(data) {
+            $('#ajaxgitpic>ul>li:eq(1)>p').html(data.imgname[0].pagetext);
+            console.log(data);
+        },
+        complate: function(data) {
+            console.log(data);
+        },
+        error: function(e) {
+            console.log(e);
+        }
+    });
+};
 
